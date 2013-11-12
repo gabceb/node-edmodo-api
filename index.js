@@ -18,16 +18,16 @@ if (/\bverbose\b/.test(process.env.NODE_DEBUG)) {
 
 var clientURL = "http://URL-TO-API";
 
-var NpmPackage = function(url){
+var EdmodoAPI = function(url){
 	this.url = url || clientURL;
 	_my = { stations : {} };
 };
 
-NpmPackage.prototype = new events.EventEmitter;
+EdmodoAPI.prototype = new events.EventEmitter;
 
 module.exports = NpmPackage;
 
-NpmPackage.prototype.fetch = function(){
+EdmodoAPI.prototype.fetch = function(){
 	var self = this;
 
 	request({uri : this.url, json : true }, function(error, response, body){

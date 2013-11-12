@@ -1,6 +1,6 @@
 require('mocha');
 
-var NpmPackage = require('../index'),
+var EdmodoAPI = require('../index'),
 	should = require('should'),
 	util = require('util');
 
@@ -11,12 +11,12 @@ var client = null;
 describe('npm-package', function(){
 
 	beforeEach(function(){
-		client = new NpmPackage();
+		client = new EdmodoAPI();
 	});
 
 	describe('initialization', function(){
-		it('should create a new instance of the NpmPackage class', function(done){
-			client.should.be.an.instanceOf(NpmPackage)
+		it('should create a new instance of the EdmodoAPI class', function(done){
+			client.should.be.an.instanceOf(EdmodoAPI)
 
 			done();
 		});

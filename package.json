@@ -1,10 +1,10 @@
 {
-   "name":"NPM-PACKAGE-NAME",
-   "description":"NPM PACKAGE DESCRIPTION",
+   "name":"Gabriel Cebrian",
+   "description":"A Node NPM package to interact with the Edmodo API",
    "version":"0.0.1",
-   "homepage":"http://URL-TO-NPM-PACKAGE",
-   "repository":"git://NPM-PACKAGE-GIT-URL",
-   "author":"NPM Author <EMAIL@DOMAIN.COM> (http://URL-FOR-NPM-AUTHOR)",
+   "homepage":"https://github.com/gabceb/node-edmodo-api",
+   "repository":"git@github.com:gabceb/node-edmodo-api.git",
+   "author":"NPM Author gabceb@gmail.com <https://github.com/gabceb>",
    "main":"./index.js",
    
    "dependencies":{
@@ -25,7 +25,7 @@
    },
    "licenses":[
       {
-         "type":"LICENSE FOR NPM PACKAGE",
+         "type":"MIT",
          "url":"http://URL-TO-NPM-PACKAGE-LICENSE"
       }
    ]
