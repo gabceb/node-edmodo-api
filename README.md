@@ -17,5 +17,3 @@ make test-dev (verbose output for request and debug function)
 You're welcome to fork this project and send pull requests.
 
 Copyright (c) 2013 Gabriel Cebrian, released under the MIT license
-
-
