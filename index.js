@@ -24,6 +24,8 @@ var EdmodoAPI = function(apiKey, productionEnv){
 		throw new Error("An Edmodo API key has to be passed");
 	}
 
+	this.apiKey = apiKey;
+
 	if(productionEnv)
 	{
 		this.url = config.production.endpoint;
@@ -34,24 +36,26 @@ var EdmodoAPI = function(apiKey, productionEnv){
 	}
 };
 
-EdmodoAPI.prototype = new events.EventEmitter;
-
 module.exports = EdmodoAPI;
 
-EdmodoAPI.prototype.fetch = function(){
-	var self = this;
+EdmodoAPI.prototype.launchRequests = function launRequests(launchRequest, callback){
+	var uri = this.resource_uri("launchRequests");
+	var qs = { api_key : this.apiKey, launch_key : launchRequest};
 
-	request({uri : this.url, json : true }, function(error, response, body){
+	request({uri : uri, qs : qs, json : true }, function(error, response, body){
 		
 		if(!error && response.statusCode == 200){
-			self.original_response = body;
-			
-			// Do something here
-
-			self.emit("fetch");
+			callback(response, body);
 		}
 		else{
-			self.emit("error", error, response.statusCode );
+			throw new Error("Something went wrong. Error: " + error + "Response: " + response);
 		}
 	});
 };
+
+EdmodoAPI.prototype.resource_uri = function(resource){
+	format = ".json";
+
+	return this.url + "/" + resource + format;
+};
+

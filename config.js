@@ -6,7 +6,7 @@ module.exports = function(){
       endpoint: "https://appsapi.edmodo.com/" + version
     },
     sandbox : {
-      endpoint: "https://appsapi.edmodobox.com/" + version
+      endpoint: "https://appsapi.edmodobox.com:443/" + version
     }
   };
 

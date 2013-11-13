@@ -64,4 +64,20 @@ describe('Node-Edmodo-API', function(){
 	      done();
 	    });
 	});
+
+	describe('launchRequest', function(){
+		it('should get the correct hash back from the launchRequest request when environment is production', function(done){	
+	      client.launchRequests("5c18c7", function(response, body){
+	      	
+	      	body.should.have.property('user_type', 'TEACHER');
+	      	body.should.have.property('user_token', 'b020c42d1');
+	      	body.should.have.property('first_name', 'Bob');
+	      	body.should.have.property('last_name', 'Smith');
+	      	body.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	body.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
 });
