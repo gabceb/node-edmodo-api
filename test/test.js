@@ -50,4 +50,18 @@ describe('Node-Edmodo-API', function(){
 			done();
 		});
 	});
+
+	describe('config', function(){
+		it('should have a production endpoint', function(done){	
+	      config.should.have.property("production");
+
+	      done();
+		});
+
+	    it('should have a sandbox endopoint', function(done){
+	      config.should.have.property("sandbox");
+
+	      done();
+	    });
+	});
 });
