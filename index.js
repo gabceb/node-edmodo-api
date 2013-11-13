@@ -2,7 +2,8 @@ var util = require('util'),
 	request = require('request'),
 	events = require('events'),
 	_und = require('underscore'),
-	_und_s = require('underscore.string');
+	_und_s = require('underscore.string'),
+	config = require('./config.js');
 
 var _my = null;
 
@@ -16,16 +17,14 @@ if (/\bverbose\b/.test(process.env.NODE_DEBUG)) {
   debug = function() {}
 }
 
-var clientURL = "http://URL-TO-API";
-
 var EdmodoAPI = function(url){
-	this.url = url || clientURL;
-	_my = { stations : {} };
+	this.url = url;
+	
 };
 
 EdmodoAPI.prototype = new events.EventEmitter;
 
-module.exports = NpmPackage;
+module.exports = EdmodoAPI;
 
 EdmodoAPI.prototype.fetch = function(){
 	var self = this;
@@ -34,8 +33,7 @@ EdmodoAPI.prototype.fetch = function(){
 		
 		if(!error && response.statusCode == 200){
 			self.original_response = body;
-			self.response = self.original_response.stationBeanList
-
+			
 			// Do something here
 
 			self.emit("fetch");
