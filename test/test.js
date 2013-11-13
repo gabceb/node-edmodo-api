@@ -8,11 +8,13 @@ var EdmodoAPI = require('../index'),
 require('./fixtures/fixtures');
 
 var client = null;
+var api_key = "1234567890abcdefghijklmn";
+var invalid_api_key = "invalid_key";
 
-describe('npm-package', function(){
+describe('Node-Edmodo-API', function(){
 
 	beforeEach(function(){
-		client = new EdmodoAPI();
+		client = new EdmodoAPI(api_key);
 	});
 
 	describe('initialization', function(){
@@ -29,15 +31,23 @@ describe('npm-package', function(){
 		});
 
 		it('should have a url set to production if production env used', function(done){
-			client = new EdmodoAPI(true);
+			client = new EdmodoAPI(api_key, true);
 
 			client.should.have.property("url", config.production.endpoint);
 
 			done();
 		});
+
+		it('should throw an error if no API key is passed on initialization', function(done){
+			(function(){ new EdmodoAPI() }).should.throwError('An Edmodo API key has to be passed');
+
+			done();
+		});
+
+		it('should throw an error if the API key is passed as null on initialization', function(done){
+			(function(){ new EdmodoAPI(null) }).should.throwError('An Edmodo API key has to be passed');
+
+			done();
+		});
 	});
-
-	descript('')
-
-	// Add other tests here
 });

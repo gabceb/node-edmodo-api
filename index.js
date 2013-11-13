@@ -17,7 +17,13 @@ if (/\bverbose\b/.test(process.env.NODE_DEBUG)) {
   debug = function() {}
 }
 
-var EdmodoAPI = function(productionEnv){
+var EdmodoAPI = function(apiKey, productionEnv){
+	
+	if(!apiKey)
+	{
+		throw new Error("An Edmodo API key has to be passed");
+	}
+
 	if(productionEnv)
 	{
 		this.url = config.production.endpoint;
