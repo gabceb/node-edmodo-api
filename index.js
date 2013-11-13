@@ -3,7 +3,7 @@ var util = require('util'),
 	events = require('events'),
 	_und = require('underscore'),
 	_und_s = require('underscore.string'),
-	config = require('./config.js');
+	config = require('./config.js')();
 
 var _my = null;
 
@@ -17,9 +17,15 @@ if (/\bverbose\b/.test(process.env.NODE_DEBUG)) {
   debug = function() {}
 }
 
-var EdmodoAPI = function(url){
-	this.url = url;
-	
+var EdmodoAPI = function(productionEnv){
+	if(productionEnv)
+	{
+		this.url = config.production.endpoint;
+	}
+	else
+	{
+		this.url = config.sandbox.endpoint;
+	}
 };
 
 EdmodoAPI.prototype = new events.EventEmitter;
