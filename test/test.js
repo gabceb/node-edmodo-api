@@ -17,6 +17,16 @@ describe('Node-Edmodo-API', function(){
 		client = new EdmodoAPI(api_key);
 	});
 
+	describe('Array helper functions', function(){
+		it('to_params should be return the correct params from an array', function(done){
+			var array = ["param1", "param2"];
+
+			array.to_params().should.equal('["param1","param2"]');
+
+			done();
+		});
+	});
+
 	describe('initialization', function(){
 		it('should create a new instance of the EdmodoAPI class with no parameters', function(done){
 			client.should.be.an.instanceOf(EdmodoAPI)
@@ -66,7 +76,7 @@ describe('Node-Edmodo-API', function(){
 	});
 
 	describe('launchRequest', function(){
-		it('should get the correct hash back from the launchRequest request when environment is production', function(done){	
+		it('should get the correct object back from the launchRequest request when environment is production', function(done){	
 	      client.launchRequests("5c18c7", function(response, body){
 	      	
 	      	body.should.have.property('user_type', 'TEACHER');
@@ -75,6 +85,36 @@ describe('Node-Edmodo-API', function(){
 	      	body.should.have.property('last_name', 'Smith');
 	      	body.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
 	      	body.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('launchRequest', function(){
+		it('should get the correct object back from the users request', function(done){	
+	      var users = ["b020c42d1","jd3i1c0pl"];
+
+	      client.users(users, function(response, body){
+	      	body.should.have.length(2);
+
+	      	user1 = body[0]
+
+	      	user1.should.have.property('user_type', 'TEACHER');
+	      	user1.should.have.property('user_token', 'b020c42d1');
+	      	user1.should.have.property('first_name', 'Bob');
+	      	user1.should.have.property('last_name', 'Smith');
+	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+
+	      	user2 = body[1]
+
+	      	user2.should.have.property('user_type', 'STUDENT');
+	      	user2.should.have.property('user_token', 'jd3i1c0pl');
+	      	user2.should.have.property('first_name', 'Jane');
+	      	user2.should.have.property('last_name', 'Student');
+	      	user2.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user2.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
 	      	
 	      	done();
 	      })
