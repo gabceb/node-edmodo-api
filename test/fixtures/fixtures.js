@@ -22,15 +22,15 @@ uri = config.sandbox.endpoint + '/users.json?api_key=' + api_key + '&user_tokens
 
 fakeweb.registerUri({uri : uri, body : '[ {"user_type":"TEACHER","user_token":"b020c42d1","first_name":"Bob","last_name":"Smith","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png"},{"user_type":"STUDENT","user_token":"jd3i1c0pl","first_name":"Jane","last_name":"Student","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png"}]'});
 
+// Groups request uri
+uri = config.sandbox.endpoint + "/groups.json?api_key=" + api_key + "&group_ids=%5B379557%2C379562%5D";
+
+fakeweb.registerUri({uri : uri, body : '[{"group_id":379557, "title":"Algebra", "member_count":20, "owners":["b020c42d1","693d5c765"],"start_level":"9th","end_level":"9th"},{"group_id":379562,"title":"Geometry","member_count":28,"owners":["b020c42d1"],"start_level":"3rd","end_level":"3rd"}]'});
+
 // Profiles request uri
 uri = config.sandbox.endpoint + '/profiles.json?api_key=' + api_key + '&user_tokens=%5B%22b020c42d1%22%5D';
 
 fakeweb.registerUri({uri : uri, body : "[ {'user_token':'b020c42d1','school':{'edmodo_school_id':123456,'nces_school_id':'ABC987654','name':'Edmodo High','address':'60 E. 3rd Avenue, #390','city':'San Mateo','state':'CA','zip_code':'94401','country_code':'US'}}]"});
-
-// Groups request uri
-uri = config.sandbox.endpoint + '/groups.json?api_key=' + api_key + '&group_ids=%5B379557%2C379562%5D';
-
-fakeweb.registerUri({uri : uri, body : "[{'group_id':379557, 'title':'Algebra', 'member_count':20, 'owners':['b020c42d1','693d5c765'],'start_level':'9th','end_level':'9th'},{'group_id':379562,'title':'Geometry','member_count':28,'owners':['b020c42d1'],'start_level':'3rd','end_level':'3rd'}]"});
 
 // GroupsForUser request uri
 uri = config.sandbox.endpoint + '/groupsForUser.json?api_key=' + api_key + '&user_token=b020c42d1';

@@ -11,7 +11,14 @@ Array.prototype.to_params = function(){
 
 	for(var i = 0; i < this.length; i++)
 	{
-		params += '"' + this[i] + '"';
+		// TO DO: Refactor this method
+		if (typeof this[i] === 'string') {
+    		params += '"' + this[i] + '"';
+		}
+		else {
+			params += this[i];
+		}
+		
 
 		if(i != this.length - 1)
 		{
@@ -72,6 +79,20 @@ EdmodoAPI.prototype.users = function users(userIds, callback){
 
 	var uri = this.resource_uri("users");
 	var qs = { api_key : this.apiKey, user_tokens : userIds.to_params() };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.groups = function groups(groups, callback){
+	
+	// HACK HACK: Same hack used by jQuery to detect arrays cross platforms. See http://stackoverflow.com/a/2763063/1664346
+	if(toString.call(groups) !== "[object Array]")
+	{
+		groups = [groups];
+	}
+
+	var uri = this.resource_uri("groups");
+	var qs = { api_key : this.apiKey, group_ids : groups.to_params() };
 
 	this.request(uri, qs, callback);
 };

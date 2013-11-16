@@ -91,7 +91,7 @@ describe('Node-Edmodo-API', function(){
 		});
 	});
 
-	describe('launchRequest', function(){
+	describe('users request', function(){
 		it('should get the correct object back from the users request', function(done){	
 	      var users = ["b020c42d1","jd3i1c0pl"];
 
@@ -115,6 +115,40 @@ describe('Node-Edmodo-API', function(){
 	      	user2.should.have.property('last_name', 'Student');
 	      	user2.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
 	      	user2.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('groups request', function(){
+		it('should get the correct object back from the groups request', function(done){	
+	      var groups = [379557, 379562];
+
+	      client.groups(groups, function(response, body){
+	      	body.should.have.length(2);
+	      	group1 = body[0]
+
+	      	group1.should.have.property('group_id', 379557);
+	      	group1.should.have.property('title', 'Algebra');
+	      	group1.should.have.property('member_count', 20);
+	      	group1.should.have.property('owners')
+	      	group1.should.have.property('start_level', '9th');
+	      	group1.should.have.property('end_level', '9th');
+
+	      	group1.owners.should.be.instanceof(Array).and.have.lengthOf(2);
+
+	      	console.log(group1.owners)
+	      	group2 = body[1]
+
+	      	group2.should.have.property('group_id', 379562);
+	      	group2.should.have.property('title', 'Geometry');
+	      	group2.should.have.property('member_count', 28);
+	      	group2.should.have.property('owners');
+	      	group2.should.have.property('start_level', '3rd');
+	      	group2.should.have.property('end_level', '3rd');
+
+	      	group2.owners.should.be.instanceof(Array).and.have.lengthOf(1);
 	      	
 	      	done();
 	      })
