@@ -378,4 +378,25 @@ describe('Node-Edmodo-API', function(){
 	      })
 		});
 	});
+
+	describe('gradesSetByAppForUser request', function(){
+		it('should get the correct object back from the gradesSetByAppForUser request', function(done){	
+	      var userToken = "jd3i1c0pl";
+
+	      client.gradesSetByAppForUser(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var grade = body[0];
+
+	      	grade.should.have.property('grade_id', 3695);
+	      	grade.should.have.property('title', 'Super Project');
+	      	grade.should.have.property('group_id', 379557);
+	      	grade.should.have.property('score', '8');
+	      	grade.should.have.property('total', '10');
+	      	
+	      	done();
+	      })
+		});
+	});
 });

@@ -62,15 +62,15 @@ uri = config.sandbox.endpoint + '/assignmentsComingDue.json?api_key=' + api_key 
 
 fakeweb.registerUri({uri : uri, body : '[{"assignment_id":4738052,"assignment_title":"Chapter 6 Homework","description":"Do lots of practice problems ","due_date":"2011-10-11","recipients":[{"user_token":"9ff85e278"},{"group_id":379557}],"creator":{"user_type":"TEACHER","title":"MR","first_name":"Bob","last_name":"Smith","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png","user_token":"b020c42d1"}}]'});
 
+// gradesSetByAppForUser request uri
+uri = config.sandbox.endpoint + '/gradesSetByAppForUser.json?api_key=' + api_key + '&user_token=jd3i1c0pl';
+
+fakeweb.registerUri({uri : uri,body : '[{"grade_id":3695,"title":"Super Project","group_id":379557,"score":"8","total":"10"}]'});
+
 // Profiles request uri
 uri = config.sandbox.endpoint + '/profiles.json?api_key=' + api_key + '&user_tokens=%5B%22b020c42d1%22%5D';
 
 fakeweb.registerUri({uri : uri, body : "[ {'user_token':'b020c42d1','school':{'edmodo_school_id':123456,'nces_school_id':'ABC987654','name':'Edmodo High','address':'60 E. 3rd Avenue, #390','city':'San Mateo','state':'CA','zip_code':'94401','country_code':'US'}}]"});
-
-// gradesSetByAppForUser request uri
-uri = config.sandbox.endpoint + '/gradesSetByAppForUser.json?api_key=' + api_key + '&user_token=jd3i1c0pl';
-
-fakeweb.registerUri({uri : uri,body : "[{'grade_id':3695,'title':'Super Project','group_id':379557,'score':'8','total':'10'}]"});
 
 // gradesSetByAppForGroup request uri
 uri = config.sandbox.endpoint + '/gradesSetByAppForGroup.json?api_key=' + api_key + '&group_id=379557';

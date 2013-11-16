@@ -153,6 +153,14 @@ EdmodoAPI.prototype.assignmentsComingDue = function assignmentsComingDue(userTok
 	this.request(uri, qs, callback);
 };
 
+EdmodoAPI.prototype.gradesSetByAppForUser = function gradesSetByAppForUser(userToken, callback){
+	
+	var uri = this.resource_uri("gradesSetByAppForUser");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
 // Private methods
 
 EdmodoAPI.prototype.request = function(uri, qs, callback){
