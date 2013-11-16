@@ -97,6 +97,14 @@ EdmodoAPI.prototype.groups = function groups(groups, callback){
 	this.request(uri, qs, callback);
 };
 
+EdmodoAPI.prototype.groupsForUser = function groups_for_user(userToken, callback){
+	
+	var uri = this.resource_uri("groupsForUser");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
 // Private methods
 
 EdmodoAPI.prototype.request = function(uri, qs, callback){

@@ -154,4 +154,40 @@ describe('Node-Edmodo-API', function(){
 	      })
 		});
 	});
+
+	describe('groupsForUser request', function(){
+		it('should get the correct object back from the groupsForUsers request', function(done){	
+	      var userToken = "b020c42d1";
+
+	      client.groupsForUser(userToken, function(response, body){
+	      	
+	      	body.should.be.instanceof(Array).and.have.lengthOf(2);
+
+	      	group1 = body[0]
+
+	      	group1.should.have.property('group_id', 379557);
+	      	group1.should.have.property('title', 'Algebra');
+	      	group1.should.have.property('member_count', 20);
+	      	group1.should.have.property('owners')
+	      	group1.should.have.property('start_level', '9th');
+	      	group1.should.have.property('end_level', '9th');
+
+	      	group1.owners.should.be.instanceof(Array).and.have.lengthOf(2);
+
+	      	console.log(group1.owners)
+	      	group2 = body[1]
+
+	      	group2.should.have.property('group_id', 379562);
+	      	group2.should.have.property('title', 'Geometry');
+	      	group2.should.have.property('member_count', 28);
+	      	group2.should.have.property('owners');
+	      	group2.should.have.property('start_level', '3rd');
+	      	group2.should.have.property('end_level', '3rd');
+
+	      	group2.owners.should.be.instanceof(Array).and.have.lengthOf(1);
+	      	
+	      	done();
+	      })
+		});
+	});
 });
