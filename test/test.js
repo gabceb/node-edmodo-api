@@ -98,7 +98,7 @@ describe('Node-Edmodo-API', function(){
 	      client.users(users, function(response, body){
 	      	body.should.have.length(2);
 
-	      	user1 = body[0]
+	      	var user1 = body[0]
 
 	      	user1.should.have.property('user_type', 'TEACHER');
 	      	user1.should.have.property('user_token', 'b020c42d1');
@@ -107,7 +107,7 @@ describe('Node-Edmodo-API', function(){
 	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
 	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
 
-	      	user2 = body[1]
+	      	var user2 = body[1]
 
 	      	user2.should.have.property('user_type', 'STUDENT');
 	      	user2.should.have.property('user_token', 'jd3i1c0pl');
@@ -127,7 +127,8 @@ describe('Node-Edmodo-API', function(){
 
 	      client.groups(groups, function(response, body){
 	      	body.should.have.length(2);
-	      	group1 = body[0]
+	      	
+	      	var group1 = body[0]
 
 	      	group1.should.have.property('group_id', 379557);
 	      	group1.should.have.property('title', 'Algebra');
@@ -138,8 +139,7 @@ describe('Node-Edmodo-API', function(){
 
 	      	group1.owners.should.be.instanceof(Array).and.have.lengthOf(2);
 
-	      	console.log(group1.owners)
-	      	group2 = body[1]
+	      	var group2 = body[1]
 
 	      	group2.should.have.property('group_id', 379562);
 	      	group2.should.have.property('title', 'Geometry');
@@ -163,7 +163,7 @@ describe('Node-Edmodo-API', function(){
 	      	
 	      	body.should.be.instanceof(Array).and.have.lengthOf(2);
 
-	      	group1 = body[0]
+	      	var group1 = body[0]
 
 	      	group1.should.have.property('group_id', 379557);
 	      	group1.should.have.property('title', 'Algebra');
@@ -174,8 +174,7 @@ describe('Node-Edmodo-API', function(){
 
 	      	group1.owners.should.be.instanceof(Array).and.have.lengthOf(2);
 
-	      	console.log(group1.owners)
-	      	group2 = body[1]
+	      	var group2 = body[1]
 
 	      	group2.should.have.property('group_id', 379562);
 	      	group2.should.have.property('title', 'Geometry');
@@ -198,7 +197,7 @@ describe('Node-Edmodo-API', function(){
 	      client.members(group_id, function(response, body){
 	      	body.should.be.instanceof(Array).and.have.lengthOf(3);
 
-	      	user1 = body[0];
+	      	var user1 = body[0];
 
 	      	user1.should.have.property('user_type', 'TEACHER');
 	      	user1.should.have.property('user_token', 'b020c42d1');
@@ -207,23 +206,23 @@ describe('Node-Edmodo-API', function(){
 	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
 	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
 
-	      	user1 = body[1];
+	      	var user2 = body[1];
 
-	      	user1.should.have.property('user_type', 'TEACHER');
-	      	user1.should.have.property('user_token', '693d5c765');
-	      	user1.should.have.property('first_name', 'Tom');
-	      	user1.should.have.property('last_name', 'Jefferson');
-	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
-	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
-
-	      	user2 = body[2];
-
-	      	user2.should.have.property('user_type', 'STUDENT');
-	      	user2.should.have.property('user_token', 'jd3i1c0pl');
-	      	user2.should.have.property('first_name', 'Jane');
-	      	user2.should.have.property('last_name', 'Student');
+	      	user2.should.have.property('user_type', 'TEACHER');
+	      	user2.should.have.property('user_token', '693d5c765');
+	      	user2.should.have.property('first_name', 'Tom');
+	      	user2.should.have.property('last_name', 'Jefferson');
 	      	user2.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
 	      	user2.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+
+	      	var user3 = body[2];
+
+	      	user3.should.have.property('user_type', 'STUDENT');
+	      	user3.should.have.property('user_token', 'jd3i1c0pl');
+	      	user3.should.have.property('first_name', 'Jane');
+	      	user3.should.have.property('last_name', 'Student');
+	      	user3.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user3.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
 	      	
 	      	done();
 	      })
@@ -238,7 +237,7 @@ describe('Node-Edmodo-API', function(){
 
 	      	body.should.be.instanceof(Array).and.have.lengthOf(2);
 
-	      	user1 = body[0];
+	      	var user1 = body[0];
 
 	      	user1.should.have.property('user_type', 'STUDENT');
 	      	user1.should.have.property('user_token', '83a8e614d');
@@ -247,7 +246,7 @@ describe('Node-Edmodo-API', function(){
 	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
 	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
 
-	      	user2 = body[1];
+	      	var user2 = body[1];
 
 	      	user2.should.have.property('user_type', 'STUDENT');
 	      	user2.should.have.property('user_token', '7968c39b7');
