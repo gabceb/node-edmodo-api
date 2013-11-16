@@ -121,6 +121,38 @@ EdmodoAPI.prototype.classmates = function classmates(userToken, callback){
 	this.request(uri, qs, callback);
 };
 
+EdmodoAPI.prototype.teachers = function teachers(userToken, callback){
+	
+	var uri = this.resource_uri("teachers");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.teachermates = function teachermates(userToken, callback){
+	
+	var uri = this.resource_uri("teachermates");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.teacherConnections = function teacherConnections(userToken, callback){
+	
+	var uri = this.resource_uri("teacherConnections");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.assignmentsComingDue = function assignmentsComingDue(userToken, callback){
+	
+	var uri = this.resource_uri("assignmentsComingDue");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
 // Private methods
 
 EdmodoAPI.prototype.request = function(uri, qs, callback){

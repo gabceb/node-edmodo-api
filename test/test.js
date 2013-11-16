@@ -259,4 +259,123 @@ describe('Node-Edmodo-API', function(){
 	      })
 		});
 	});
+
+	describe('teachers request', function(){
+		it('should get the correct object back from the teachers request', function(done){	
+	      var userToken = "jd3i1c0pl";
+
+	      client.teachers(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(2);
+
+	      	var user1 = body[0];
+
+	      	user1.should.have.property('user_type', 'TEACHER');
+	      	user1.should.have.property('user_token', 'b020c42d1');
+	      	user1.should.have.property('first_name', 'Bob');
+	      	user1.should.have.property('last_name', 'Smith');
+	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+
+	      	var user2 = body[1];
+
+	      	user2.should.have.property('user_type', 'TEACHER');
+	      	user2.should.have.property('user_token', '693d5c765');
+	      	user2.should.have.property('first_name', 'Tom');
+	      	user2.should.have.property('last_name', 'Jefferson');
+	      	user2.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user2.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('teachermates request', function(){
+		it('should get the correct object back from the teachermates request', function(done){	
+	      var userToken = "jd3i1c0pl";
+
+	      client.teachermates(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(2);
+
+	      	var user1 = body[0];
+
+	      	user1.should.have.property('user_type', 'TEACHER');
+	      	user1.should.have.property('user_token', 'b020c42d1');
+	      	user1.should.have.property('first_name', 'Bob');
+	      	user1.should.have.property('last_name', 'Smith');
+	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+
+	      	var user2 = body[1];
+
+	      	user2.should.have.property('user_type', 'TEACHER');
+	      	user2.should.have.property('user_token', '693d5c765');
+	      	user2.should.have.property('first_name', 'Tom');
+	      	user2.should.have.property('last_name', 'Jefferson');
+	      	user2.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user2.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('teacherConnections request', function(){
+		it('should get the correct object back from the teacherConnections request', function(done){	
+	      var userToken = "jd3i1c0pl";
+
+	      client.teacherConnections(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var user1 = body[0];
+
+	      	user1.should.have.property('user_type', 'TEACHER');
+	      	user1.should.have.property('user_token', '693d5c765');
+	      	user1.should.have.property('first_name', 'Tom');
+	      	user1.should.have.property('last_name', 'Jefferson');
+	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('assignmentsComingDue request', function(){
+		it('should get the correct object back from the assignmentsComingDue request', function(done){	
+	      var userToken = "jd3i1c0pl";
+
+	      client.assignmentsComingDue(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var assignment = body[0];
+
+	      	assignment.should.have.property('assignment_id', 4738052);
+	      	assignment.should.have.property('assignment_title', 'Chapter 6 Homework');
+	      	assignment.should.have.property('description', 'Do lots of practice problems ');
+	      	assignment.should.have.property('due_date', '2011-10-11');
+
+	      	// Recipients
+	      	var recipients = assignment.recipients
+
+	      	recipients.should.be.instanceof(Array).and.have.lengthOf(2);
+
+	      	// Creator property
+	      	var creator = assignment.creator;
+
+	      	creator.should.have.property('user_type', 'TEACHER');
+	      	creator.should.have.property('title', 'MR');
+	      	creator.should.have.property('first_name', 'Bob');
+	      	creator.should.have.property('last_name', 'Smith');
+	      	creator.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	creator.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
 });
