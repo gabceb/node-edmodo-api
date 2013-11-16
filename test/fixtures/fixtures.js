@@ -37,16 +37,15 @@ uri = config.sandbox.endpoint + '/members.json?api_key=' + api_key + '&group_id=
 
 fakeweb.registerUri({uri : uri, body : '[{"user_type":"TEACHER","user_token":"b020c42d1","first_name":"Bob","last_name":"Smith","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png"},{"user_type":"TEACHER","user_token":"693d5c765","first_name":"Tom","last_name":"Jefferson","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png"},{"user_type":"STUDENT","user_token":"jd3i1c0pl","first_name":"Jane","last_name":"Student","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png"}]'});
 
+// Classmates request uri
+uri = config.sandbox.endpoint + '/classmates.json?api_key=' + api_key + '&user_token=jd3i1c0pl';
+
+fakeweb.registerUri({uri : uri, body : '[{"user_type":"STUDENT","user_token":"83a8e614d","first_name":"Allison","last_name":"Student","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png","shared_groups":[379557,379558]},{"user_type":"STUDENT","user_token":"7968c39b7","first_name":"Mike","last_name":"Student","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png","shared_groups":[379558]}]'});
+
 // Profiles request uri
 uri = config.sandbox.endpoint + '/profiles.json?api_key=' + api_key + '&user_tokens=%5B%22b020c42d1%22%5D';
 
 fakeweb.registerUri({uri : uri, body : "[ {'user_token':'b020c42d1','school':{'edmodo_school_id':123456,'nces_school_id':'ABC987654','name':'Edmodo High','address':'60 E. 3rd Avenue, #390','city':'San Mateo','state':'CA','zip_code':'94401','country_code':'US'}}]"});
-
-// Classmates request uri
-uri = config.sandbox.endpoint + '/classmates.json?api_key=' + api_key + '&user_token=jd3i1c0pl';
-
-fakeweb.registerUri({uri : uri,
-					 body : "[{'user_type':'STUDENT','user_token':'83a8e614d','first_name':'Allison','last_name':'Student','avatar_url':'http://edmodoimages.s3.amazonaws.com/default_avatar.png','thumb_url':'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png','shared_groups':[379557,379558]},{'user_type':'STUDENT','user_token':'7968c39b7','first_name':'Mike','last_name':'Student','avatar_url':'http://edmodoimages.s3.amazonaws.com/default_avatar.png','thumb_url':'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png','shared_groups':[379558]}]"});
 
 // Teachers request uri
 uri = config.sandbox.endpoint + '/teachers.json?api_key=' + api_key + '&user_token=jd3i1c0pl';

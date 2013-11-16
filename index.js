@@ -113,6 +113,14 @@ EdmodoAPI.prototype.members = function members(groupId, callback){
 	this.request(uri, qs, callback);
 };
 
+EdmodoAPI.prototype.classmates = function classmates(userToken, callback){
+	
+	var uri = this.resource_uri("classmates");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
 // Private methods
 
 EdmodoAPI.prototype.request = function(uri, qs, callback){

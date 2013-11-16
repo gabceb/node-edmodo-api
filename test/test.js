@@ -229,4 +229,35 @@ describe('Node-Edmodo-API', function(){
 	      })
 		});
 	});
+
+	describe('classmates request', function(){
+		it('should get the correct object back from the classmates request', function(done){	
+	      var userToken = "jd3i1c0pl";
+
+	      client.classmates(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(2);
+
+	      	user1 = body[0];
+
+	      	user1.should.have.property('user_type', 'STUDENT');
+	      	user1.should.have.property('user_token', '83a8e614d');
+	      	user1.should.have.property('first_name', 'Allison');
+	      	user1.should.have.property('last_name', 'Student');
+	      	user1.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user1.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+
+	      	user2 = body[1];
+
+	      	user2.should.have.property('user_type', 'STUDENT');
+	      	user2.should.have.property('user_token', '7968c39b7');
+	      	user2.should.have.property('first_name', 'Mike');
+	      	user2.should.have.property('last_name', 'Student');
+	      	user2.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	user2.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
 });
