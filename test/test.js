@@ -399,4 +399,146 @@ describe('Node-Edmodo-API', function(){
 	      })
 		});
 	});
+
+	describe('gradesSetByAppForGroup request', function(){
+		it('should get the correct object back from the gradesSetByAppForGroup request', function(done){	
+	      var groupId = 379557;
+
+	      client.gradesSetByAppForGroup(groupId, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var grade = body[0];
+
+	      	grade.should.have.property('grade_id', 3695);
+	      	grade.should.have.property('title', 'Super Project');
+	      	grade.should.have.property('group_id', 379557);
+	      	grade.should.have.property('average_score', 7);
+	      	grade.should.have.property('graded_count', 15);
+	      	grade.should.have.property('total', '10');
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('badgesAwarded request', function(){
+		it('should get the correct object back from the badgesAwarded request', function(done){	
+	      var userToken = "jd3i1c0pl";
+
+	      client.badgesAwarded(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var grade = body[0];
+
+	      	grade.should.have.property('badge_id', 6580);
+	      	grade.should.have.property('image_url', 'http://edmodobadges.s3.amazonaws.com/1234.jpg');
+	      	grade.should.have.property('title', 'Good Job');
+	      	grade.should.have.property('description', 'You did a good job!');
+	      	grade.should.have.property('times_awarded', 1);
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('eventsByApp request', function(){
+		it('should get the correct object back from the eventsByApp request', function(done){	
+	      var userToken = "b020c42d1";
+
+	      client.eventsByApp(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var event1 = body[0];
+
+	      	event1.should.have.property('event_id', 621119);
+	      	event1.should.have.property('description', 'Pizza party tomorrow');
+	      	event1.should.have.property('start_date', '2011-12-07');
+	      	event1.should.have.property('end_date', '2011-12-07');
+
+	      	var recipients = event1.recipients;
+
+	      	recipients.should.be.instanceof(Array).and.have.lengthOf(2);
+
+	      	recipients[0].should.have.property('user_token', 'b020c42d1');
+	      	recipients[1].should.have.property('group_id', 379557);
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('parents request', function(){
+		it('should get the correct object back from the parents request', function(done){	
+	      var userToken = "jd3i1c0pl";
+
+	      client.parents(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var parent = body[0];
+
+	      	parent.should.have.property('user_type', 'PARENT');
+	      	parent.should.have.property('user_token', '5e9c0e0f5');
+	      	parent.should.have.property('first_name', 'Mary');
+	      	parent.should.have.property('last_name', 'Smith');
+	      	parent.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	parent.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('children request', function(){
+		it('should get the correct object back from the children request', function(done){	
+	      var userToken = "5e9c0e0f5";
+
+	      client.children(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var child = body[0];
+
+	      	child.should.have.property('user_type', 'STUDENT');
+	      	child.should.have.property('user_token', 'jd3i1c0pl');
+	      	child.should.have.property('first_name', 'Jane');
+	      	child.should.have.property('last_name', 'Student');
+	      	child.should.have.property('avatar_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar.png');
+	      	child.should.have.property('thumb_url', 'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png');
+	      	
+	      	done();
+	      })
+		});
+	});
+
+	describe('profiles request', function(){
+		it('should get the correct object back from the profiles request', function(done){	
+	      var userToken = "b020c42d1";
+
+	      client.profiles(userToken, function(response, body){
+
+	      	body.should.be.instanceof(Array).and.have.lengthOf(1);
+
+	      	var profile = body[0];
+
+	      	profile.should.have.property('user_token', 'b020c42d1');
+
+	      	var school = profile.school;
+
+	      	school.should.have.property('edmodo_school_id', 123456);
+	      	school.should.have.property('nces_school_id', 'ABC987654');
+	      	school.should.have.property('name', 'Edmodo High');
+	      	school.should.have.property('address', '60 E. 3rd Avenue, #390');
+	      	school.should.have.property('city', 'San Mateo');
+	      	school.should.have.property('state', 'CA');
+	      	school.should.have.property('zip_code', '94401');
+	      	school.should.have.property('country_code', 'US');
+	      	
+	      	done();
+	      })
+		});
+	});
 });

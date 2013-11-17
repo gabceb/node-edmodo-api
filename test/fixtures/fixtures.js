@@ -67,32 +67,32 @@ uri = config.sandbox.endpoint + '/gradesSetByAppForUser.json?api_key=' + api_key
 
 fakeweb.registerUri({uri : uri,body : '[{"grade_id":3695,"title":"Super Project","group_id":379557,"score":"8","total":"10"}]'});
 
-// Profiles request uri
-uri = config.sandbox.endpoint + '/profiles.json?api_key=' + api_key + '&user_tokens=%5B%22b020c42d1%22%5D';
-
-fakeweb.registerUri({uri : uri, body : "[ {'user_token':'b020c42d1','school':{'edmodo_school_id':123456,'nces_school_id':'ABC987654','name':'Edmodo High','address':'60 E. 3rd Avenue, #390','city':'San Mateo','state':'CA','zip_code':'94401','country_code':'US'}}]"});
-
 // gradesSetByAppForGroup request uri
 uri = config.sandbox.endpoint + '/gradesSetByAppForGroup.json?api_key=' + api_key + '&group_id=379557';
 
-fakeweb.registerUri({uri : uri, body : "[{'grade_id':3695,'title':'Super Project','group_id':379557,'average_score':7,'total':'10','graded_count':15}]"});
+fakeweb.registerUri({uri : uri, body : '[{"grade_id":3695,"title":"Super Project","group_id":379557,"average_score":7,"total":"10","graded_count":15}]'});
 
 // badgesAwarded request uri
 uri = config.sandbox.endpoint + '/badgesAwarded.json?api_key=' + api_key + '&user_token=jd3i1c0pl';
 
-fakeweb.registerUri({uri : uri, body : "[{'badge_id':6580,'image_url':'http://edmodobadges.s3.amazonaws.com/1234.jpg','title':'Good Job','description':'You did a good job!','times_awarded':1}]"});
+fakeweb.registerUri({uri : uri, body : '[{"badge_id":6580,"image_url":"http://edmodobadges.s3.amazonaws.com/1234.jpg","title":"Good Job","description":"You did a good job!","times_awarded":1}]'});
 
 // eventsByApp request uri
 uri = config.sandbox.endpoint + '/eventsByApp.json?api_key=' + api_key + '&user_token=b020c42d1';
 
-fakeweb.registerUri({uri : uri, body : "[{'event_id':621119,'description':'Pizza party tomorrow','start_date':'2011-12-07','end_date':'2011-12-07','recipients':[{'user_token':'b020c42d1'},{'group_id':379557}]}]"});
+fakeweb.registerUri({uri : uri, body : '[{"event_id":621119,"description":"Pizza party tomorrow","start_date":"2011-12-07","end_date":"2011-12-07","recipients":[{"user_token":"b020c42d1"},{"group_id":379557}]}]'});
 
 // parents request uri
 uri = config.sandbox.endpoint + '/parents.json?api_key=' + api_key + '&user_token=jd3i1c0pl';
 
-fakeweb.registerUri({uri : uri, body : "[{'user_type':'PARENT','user_token':'5e9c0e0f5','first_name':'Mary','last_name':'Smith','avatar_url':'http://edmodoimages.s3.amazonaws.com/default_avatar.png','thumb_url':'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png','relation':'MOM'}]"});
+fakeweb.registerUri({uri : uri, body : '[{"user_type":"PARENT","user_token":"5e9c0e0f5","first_name":"Mary","last_name":"Smith","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png","relation":"MOM"}]'});
 
 // children request uri
 uri = config.sandbox.endpoint + '/children.json?api_key=' + api_key + '&user_token=5e9c0e0f5';
 
-fakeweb.registerUri({uri : uri, body : "[{ 'user_type':'STUDENT','user_token':'jd3i1c0pl','first_name':'Jane','last_name':'Student','avatar_url':'http://edmodoimages.s3.amazonaws.com/default_avatar.png','thumb_url':'http://edmodoimages.s3.amazonaws.com/default_avatar_t.png'}]"});
+fakeweb.registerUri({uri : uri, body : '[{ "user_type":"STUDENT","user_token":"jd3i1c0pl","first_name":"Jane","last_name":"Student","avatar_url":"http://edmodoimages.s3.amazonaws.com/default_avatar.png","thumb_url":"http://edmodoimages.s3.amazonaws.com/default_avatar_t.png"}]'});
+
+// Profiles request uri
+uri = config.sandbox.endpoint + '/profiles.json?api_key=' + api_key + '&user_tokens=%5B%22b020c42d1%22%5D';
+
+fakeweb.registerUri({uri : uri, body : '[ {"user_token":"b020c42d1","school":{"edmodo_school_id":123456,"nces_school_id":"ABC987654","name":"Edmodo High","address":"60 E. 3rd Avenue, #390","city":"San Mateo","state":"CA","zip_code":"94401","country_code":"US"}}]'});

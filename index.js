@@ -161,6 +161,60 @@ EdmodoAPI.prototype.gradesSetByAppForUser = function gradesSetByAppForUser(userT
 	this.request(uri, qs, callback);
 };
 
+EdmodoAPI.prototype.gradesSetByAppForGroup = function gradesSetByAppForGroup(groupId, callback){
+	
+	var uri = this.resource_uri("gradesSetByAppForGroup");
+	var qs = { api_key : this.apiKey, group_id : groupId };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.badgesAwarded = function badgesAwarded(userToken, callback){
+	
+	var uri = this.resource_uri("badgesAwarded");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.eventsByApp = function eventsByApp(userToken, callback){
+	
+	var uri = this.resource_uri("eventsByApp");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.parents = function parents(userToken, callback){
+	
+	var uri = this.resource_uri("parents");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.children = function children(userToken, callback){
+	
+	var uri = this.resource_uri("children");
+	var qs = { api_key : this.apiKey, user_token : userToken };
+
+	this.request(uri, qs, callback);
+};
+
+EdmodoAPI.prototype.profiles = function profiles(userTokens, callback){
+	
+	// HACK HACK: Same hack used by jQuery to detect arrays cross platforms. See http://stackoverflow.com/a/2763063/1664346
+	if(toString.call(userTokens) !== "[object Array]")
+	{
+		userTokens = [userTokens];
+	}
+
+	var uri = this.resource_uri("profiles");
+	var qs = { api_key : this.apiKey, user_tokens : userTokens.to_params() };
+
+	this.request(uri, qs, callback);
+};
+
 // Private methods
 
 EdmodoAPI.prototype.request = function(uri, qs, callback){
