@@ -5,7 +5,8 @@ var EdmodoAPI = require('../index'),
 	util = require('util');
 	config = require('../config.js')();
 
-require('./fixtures/fixtures');
+require('./fixtures/get-fixtures');
+require('./fixtures/post-fixtures');
 
 var client = null;
 var api_key = "1234567890abcdefghijklmn";

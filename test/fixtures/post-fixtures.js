@@ -1,0 +1,1 @@
+test = require("./fixture-helper");
