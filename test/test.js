@@ -568,11 +568,11 @@ describe('Node-Edmodo-API', function(){
 				it('should get the correct object back from the turnInAssignment request', function(done){	
 			      
 			      var userToken = "83a8e614d";
-			      var assignment_id = 4738052;
+			      var assignmentId = 4738052;
 			      var content = "Here is my assignment submission";
 			      var attachments = [{"type":"link","title":"A link","url":"http://www.edmodo.com"}];
 
-			      var options = {userToken : userToken, assignment_id : assignment_id, content : content, attachments : attachments.to_params() };
+			      var options = {userToken : userToken, assignmentId : assignmentId, content : content, attachments : attachments.to_params() };
 
 			      client.turnInAssignment(options, function(response, body){
 			      	body.should.have.property('status', 'success');

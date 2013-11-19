@@ -248,7 +248,7 @@ EdmodoAPI.prototype.userPost = function userPost(options, callback){
 //
 // userToken: String
 // content : String
-// assignment_id: Integer
+// assignmentId: Integer
 // attachments: Array of Objects 
 EdmodoAPI.prototype.turnInAssignment = function turnInAssignment(options, callback){
 	
@@ -258,7 +258,7 @@ EdmodoAPI.prototype.turnInAssignment = function turnInAssignment(options, callba
 
 	var uri = this.resource_uri("turnInAssignment");
 
-	var qs = { api_key : this.apiKey, user_token : options.userToken, content : options.content, assignment_id : options.assignment_id, attachments : options.attachments };
+	var qs = { api_key : this.apiKey, user_token : options.userToken, content : options.content, assignment_id : options.assignmentId, attachments : options.attachments };
 
 	this.request(uri, qs, callback, "POST");
 };
@@ -361,10 +361,10 @@ EdmodoAPI.prototype.setGrade = function setGrade(options, callback){
 
 // Options params:
 //
-// user_token : String
+// userToken : String
 // description : String
-// start_date : Date
-// end_date : Date
+// startDate : Date
+// endDate : Date
 // recipients : Array of Objects
 EdmodoAPI.prototype.newEvent = function newEvent(options, callback){
 
@@ -382,8 +382,8 @@ EdmodoAPI.prototype.newEvent = function newEvent(options, callback){
 
 // Options params:
 //
-// user_token : String
-// publisher_owned : Integer
+// userToken : String
+// publisherOwned : Integer
 // resource : Object
 EdmodoAPI.prototype.addToLibrary = function addToLibrary(options, callback){
 
