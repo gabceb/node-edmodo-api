@@ -1,32 +1,32 @@
 {
-   "name":"Gabriel Cebrian",
-   "description":"A Node NPM package to interact with the Edmodo API",
-   "version":"0.0.1",
-   "homepage":"https://github.com/gabceb/node-edmodo-api",
-   "repository":"git@github.com:gabceb/node-edmodo-api.git",
-   "author":"NPM Author gabceb@gmail.com <https://github.com/gabceb>",
-   "main":"./index.js",
-   
-   "dependencies":{
-      "request" : "2.27.0",
-      "underscore" : "1.5.2",
-      "underscore.string" :"2.3.3"
-   },
-   "devDependencies":{
-      "mocha":"1.14.0",
-      "should":"2.0.2",
-      "node-fakeweb":"0.0.11"
-   },
-   "scripts":{
-      "test":"make test"
-   },
-   "engines":{
-      "node":">= 0.4.0"
-   },
-   "licenses":[
-      {
-         "type":"MIT",
-         "url":"https://raw.github.com/gabceb/node-edmodo-api/master/LICENSE"
-      }
-   ]
+  "name": "node-edmodo-api",
+  "description": "A Node NPM package to interact with the Edmodo API",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gabceb/node-edmodo-api",
+  "repository": "git@github.com:gabceb/node-edmodo-api.git",
+  "author": "NPM Author gabceb@gmail.com <https://github.com/gabceb>",
+  "main": "./index.js",
+  "dependencies": {
+    "request": "2.27.0",
+    "underscore": "1.5.2",
+    "underscore.string": "2.3.3",
+    "moment": "~2.4.0"
+  },
+  "devDependencies": {
+    "mocha": "1.14.0",
+    "should": "2.0.2",
+    "node-fakeweb": "0.0.11"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/gabceb/node-edmodo-api/master/LICENSE"
+    }
+  ]
 }
