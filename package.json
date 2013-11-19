@@ -8,8 +8,6 @@
   "main": "./index.js",
   "dependencies": {
     "request": "2.27.0",
-    "underscore": "1.5.2",
-    "underscore.string": "2.3.3",
     "moment": "~2.4.0"
   },
   "devDependencies": {

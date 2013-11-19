@@ -1,8 +1,5 @@
 var util = require('util'),
 request = require('request'),
-events = require('events'),
-_und = require('underscore'),
-_und_s = require('underscore.string'),
 moment = require('moment'),
 helper = require('./lib/helper'),
 config = require('./config.js')();
