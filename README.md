@@ -1,25 +1,26 @@
 Node Edmodo API
 ===========================
 
-A Node NPM package to interact with the Edmodo API
+A Node NPM package to interact with the Edmodo API.
+
+**If you are looking for a Ruby gem to interact with the API take a look at the [Edmodo API Gem](https://github.com/gabceb/edmodo-api)**
 
 Usage:
 -------
 
 - Get an Edmodo Publisher Account at http://www.edmodo.com/publishers-requests.
-- Initialize an edmodo-api object passing your api key.
+- Initialize a EdmodoAPI object passing your api key and true or false if the production environment should be use (defaults to false).
 - Start calling Edmodo API methods.
-
-The gem uses sandbox mode by default. Use mode => production to use it on production environments
 
 Examples:
 ----------
-	client = new EdmodoAPI(api_key);
-	client.launch_requests("5c18c7");
+	// Sandbox environment
+	client = new EdmodoAPI(api_key, false);
+	client.launchRequests("5c18c7");
 
-TO DO
----------
-
+	// Production environment
+	client = new EdmodoAPI(api_key, true);
+	client.launchRequests("5c18c7");
 
 Supported Edmodo API methods
 ---------
