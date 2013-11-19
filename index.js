@@ -394,6 +394,19 @@ EdmodoAPI.prototype.addToLibrary = function addToLibrary(options, callback){
 	this.request(uri, qs, callback, "POST");
 };
 
+// Options params:
+//
+// userToken : String
+// notificationCount : Integer
+EdmodoAPI.prototype.setNotification = function setNotification(options, callback){
+
+	var uri = this.resource_uri("setNotification");
+
+	var qs = { api_key : this.apiKey, user_token : options.userToken, notification_count : options.notificationCount };
+
+	this.request(uri, qs, callback, "POST");
+};
+
 // Private methods
 
 EdmodoAPI.prototype.request = function(uri, qs, callback, method){

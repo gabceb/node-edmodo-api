@@ -729,6 +729,23 @@ describe('Node-Edmodo-API', function(){
 				});
 			});
 
+			describe('setNotification', function(){
+				it('should get the correct object back from the setNotification request', function(done){	
+			      
+			      var userToken = "b020c42d1";
+			      var notificationCount = 1;
+			      
+			      var options = { userToken : userToken, notificationCount : notificationCount };
+
+			      client.setNotification(options, function(response, body){
+			      	
+			      	body.should.have.property('updated_notification_count', "3");
+			      	
+			      	done();
+			      });
+				});
+			});
+
 		});
 	});
 });
