@@ -28,5 +28,13 @@
       "type": "MIT",
       "url": "https://raw.github.com/gabceb/node-edmodo-api/master/LICENSE"
     }
+  ],
+  "keywords": [
+    "edmodo",
+    "client",
+    "edmodo-api",
+    "api",
+    "education",
+    "edtech"
   ]
 }
