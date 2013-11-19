@@ -1,7 +1,11 @@
 Node Edmodo API
 ===========================
 
+[![NPM](https://nodei.co/npm/node-edmodo-api.png)](https://nodei.co/npm/node-edmodo-api/)
+
 A Node NPM package to interact with the Edmodo API.
+
+![status](https://api.travis-ci.org/gabceb/node-edmodo-api.png?branch=master)
 
 **If you are looking for a Ruby gem to interact with the API take a look at the [Edmodo API Gem](https://github.com/gabceb/edmodo-api)**
 
