@@ -598,6 +598,99 @@ describe('Node-Edmodo-API', function(){
 			      });
 				});
 			});
+
+			describe('updateBadge', function(){
+				it('should get the correct object back from the updateBadge request', function(done){	
+			      
+			      var badgeId = 6580;
+			      var badgeTitle = "Very Good Job";
+			      var description = "You did a very good job";
+			      var imageUrl = "http://www.edmodo.com/new_badge_image.png";
+			      
+			      var options = { badgeId : badgeId, badgeTitle : badgeTitle, description : description, imageUrl : imageUrl };
+
+			      client.updateBadge(options, function(response, body){
+			      	body.should.have.property('status', 'success');
+			      	
+			      	done();
+			      });
+				});
+			});
+
+			describe('awardBadge', function(){
+				it('should get the correct object back from the awardBadge request', function(done){	
+			      
+			      var userToken = "jd3i1c0pl";
+			      var badgeId = 6580;
+			      
+			      var options = { badgeId : badgeId, userToken : userToken };
+
+			      client.awardBadge(options, function(response, body){
+			      	
+			      	body.should.have.property('success', 1);
+			      	body.should.have.property('times_awarded', 1);
+			      	
+			      	done();
+			      });
+				});
+			});
+
+			describe('revokeBadge', function(){
+				it('should get the correct object back from the revokeBadge request', function(done){	
+			      
+			      var userToken = "jd3i1c0pl";
+			      var badgeId = 6580;
+			      
+			      var options = { badgeId : badgeId, userToken : userToken };
+
+			      client.revokeBadge(options, function(response, body){
+			      	
+			      	body.should.have.property('success', 1);
+			      	body.should.have.property('times_awarded', 0);
+			      	
+			      	done();
+			      });
+				});
+			});
+
+			describe('newGrade', function(){
+				it('should get the correct object back from the newGrade request', function(done){	
+			      
+			      var groupId = 379557;
+			      var title = "Super Project";
+			      var total = 10;
+			      
+			      var options = { groupId : groupId, title : title, total : total };
+
+			      client.newGrade(options, function(response, body){
+			      	
+			      	body.should.have.property('grade_id', 3694);
+			      	
+			      	done();
+			      });
+				});
+			});
+
+			describe('setGrade', function(){
+				it('should get the correct object back from the setGrade request', function(done){	
+			      
+			      var gradeId = 3694;
+			      var userToken = "jd3i1c0pl";
+			      var score = 3;
+			      
+			      var options = { gradeId : gradeId, userToken : userToken, score : score };
+
+			      client.setGrade(options, function(response, body){
+			      	
+			      	body.should.have.property('user_token', "83a8e614d");
+			      	body.should.have.property('score', '3');
+			      	body.should.have.property('total', '10');
+			      	
+			      	done();
+			      });
+				});
+			});
+
 		});
 	});
 });

@@ -264,10 +264,9 @@ EdmodoAPI.prototype.turnInAssignment = function turnInAssignment(options, callba
 
 // Options params:
 //
-// userToken: String
-// content : String
-// assignment_id: Integer
-// attachments: Array of Objects 
+// badgeTitle: String
+// description : String
+// imageUrl: String
 EdmodoAPI.prototype.registerBadge = function registerBadge(options, callback){
 	
 	// Default parameters
@@ -278,6 +277,83 @@ EdmodoAPI.prototype.registerBadge = function registerBadge(options, callback){
 	var uri = this.resource_uri("registerBadge");
 
 	var qs = { api_key : this.apiKey, badge_title : options.badgeTitle, description : options.description, image_url : options.imageUrl };
+
+	this.request(uri, qs, callback, "POST");
+};
+
+// Options params:
+//
+// badgeId : Integer
+// badgeTitle: String
+// description : String
+// imageUrl: String
+EdmodoAPI.prototype.updateBadge = function updateBadge(options, callback){
+	
+	// Default parameters
+	options.badgeTitle = options.badgeTitle || "";
+	options.description = options.description || "";
+	options.imageUrl = options.imageUrl || "";
+
+	var uri = this.resource_uri("updateBadge");
+
+	var qs = { api_key : this.apiKey, badge_id : options.badgeId, badge_title : options.badgeTitle, description : options.description, image_url : options.imageUrl };
+
+	this.request(uri, qs, callback, "POST");
+};
+
+// Options params:
+//
+// badgeId : Integer
+// userToken : String
+EdmodoAPI.prototype.awardBadge = function awardBadge(options, callback){
+	
+	var uri = this.resource_uri("awardBadge");
+
+	var qs = { api_key : this.apiKey, user_token : options.userToken, badge_id : options.badgeId };
+
+	this.request(uri, qs, callback, "POST");
+};
+
+// Options params:
+//
+// badgeId : Integer
+// userToken : String
+EdmodoAPI.prototype.revokeBadge = function revokeBadge(options, callback){
+	
+	var uri = this.resource_uri("revokeBadge");
+
+	var qs = { api_key : this.apiKey, user_token : options.userToken, badge_id : options.badgeId };
+
+	this.request(uri, qs, callback, "POST");
+};
+
+// Options params:
+//
+// groupId : Integer
+// title : String
+// total : Integer
+EdmodoAPI.prototype.newGrade = function newGrade(options, callback){
+	
+	// Default parameters
+	options.title = options.title || "";
+
+	var uri = this.resource_uri("newGrade");
+
+	var qs = { api_key : this.apiKey, group_id : options.groupId, title : options.title, total : options.total };
+
+	this.request(uri, qs, callback, "POST");
+};
+
+// Options params:
+//
+// gradeId : Integer
+// userToken : String
+// score : Integer
+EdmodoAPI.prototype.setGrade = function setGrade(options, callback){
+
+	var uri = this.resource_uri("setGrade");
+
+	var qs = { api_key : this.apiKey, grade_id : options.gradeId, user_token : options.userToken, score : options.score };
 
 	this.request(uri, qs, callback, "POST");
 };
