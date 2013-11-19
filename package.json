@@ -1,7 +1,7 @@
 {
   "name": "node-edmodo-api",
   "description": "A Node NPM package to interact with the Edmodo API",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/gabceb/node-edmodo-api",
   "repository": "git@github.com:gabceb/node-edmodo-api.git",
   "author": "NPM Author gabceb@gmail.com <https://github.com/gabceb>",
