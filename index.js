@@ -243,6 +243,45 @@ EdmodoAPI.prototype.userPost = function userPost(options, callback){
 	this.request(uri, qs, callback, "POST");
 };
 
+// Options params:
+//
+// userToken: String
+// content : String
+// assignment_id: Integer
+// attachments: Array of Objects 
+EdmodoAPI.prototype.turnInAssignment = function turnInAssignment(options, callback){
+	
+	// Default parameters
+	options.content = options.content || "";
+	options.attachments = options.attachments || [];
+
+	var uri = this.resource_uri("turnInAssignment");
+
+	var qs = { api_key : this.apiKey, user_token : options.userToken, content : options.content, assignment_id : options.assignment_id, attachments : options.attachments };
+
+	this.request(uri, qs, callback, "POST");
+};
+
+// Options params:
+//
+// userToken: String
+// content : String
+// assignment_id: Integer
+// attachments: Array of Objects 
+EdmodoAPI.prototype.registerBadge = function registerBadge(options, callback){
+	
+	// Default parameters
+	options.badgeTitle = options.badgeTitle || "";
+	options.description = options.description || "";
+	options.imageUrl = options.imageUrl || "";
+
+	var uri = this.resource_uri("registerBadge");
+
+	var qs = { api_key : this.apiKey, badge_title : options.badgeTitle, description : options.description, image_url : options.imageUrl };
+
+	this.request(uri, qs, callback, "POST");
+};
+
 // Private methods
 
 EdmodoAPI.prototype.request = function(uri, qs, callback, method){

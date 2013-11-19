@@ -6,7 +6,7 @@ var uri = config.sandbox.endpoint + "/userPost?api_key=1234567890abcdefghijklmn&
 test.fakeweb.registerUri({ uri: uri, body: '{"status":"success"}' });
 
 // turnInAssignment request uri
-uri = config.sandbox.endpoint + "/turnInAssignment?api_key=" + test.api_key + "&user_token=83a8e614d&assignment_id=4738052&content=Here%20is%20my%20assignment%20submission&attachments=%5B%7B%22type%22%3A%22link%22%2C%22title%22%3A%22A%20link%22%2C%22url%22%3A%22http%3A%2F%2Fwww.edmodo.com%22%7D%5D";
+uri = config.sandbox.endpoint + "/turnInAssignment?api_key=" + test.api_key + "&user_token=83a8e614d&content=Here%20is%20my%20assignment%20submission&assignment_id=4738052&attachments=%5B%7B%22type%22%3A%22link%22%2C%22title%22%3A%22A%20link%22%2C%22url%22%3A%22http%3A%2F%2Fwww.edmodo.com%22%7D%5D";
 
 test.fakeweb.registerUri({ uri: uri, body: '{"status":"success"}' });
 
