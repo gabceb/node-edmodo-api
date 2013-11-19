@@ -691,6 +691,26 @@ describe('Node-Edmodo-API', function(){
 				});
 			});
 
+			describe('newEvent', function(){
+				it('should get the correct object back from the newEvent request', function(done){	
+			      
+			      var userToken = "b020c42d1";
+			      var description = "Pizza party tomorrow";
+			      var startDate = new Date(2014,0,1);
+			      var endDate = new Date(2015,0,1);
+			      var recipients = [{"user_token":"b020c42d1"},{"group_id":379557}];
+			      
+			      var options = { userToken : userToken, description : description, startDate : startDate, endDate : endDate, recipients : recipients };
+
+			      client.newEvent(options, function(response, body){
+			      	
+			      	body.should.have.property('event_id', 621119);
+			      	
+			      	done();
+			      });
+				});
+			});
+
 		});
 	});
 });

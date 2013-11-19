@@ -3,6 +3,7 @@ var util = require('util'),
 	events = require('events'),
 	_und = require('underscore'),
 	_und_s = require('underscore.string'),
+	moment = require('moment'),
 	config = require('./config.js')();
 
 // Helper functions
@@ -354,6 +355,27 @@ EdmodoAPI.prototype.setGrade = function setGrade(options, callback){
 	var uri = this.resource_uri("setGrade");
 
 	var qs = { api_key : this.apiKey, grade_id : options.gradeId, user_token : options.userToken, score : options.score };
+
+	this.request(uri, qs, callback, "POST");
+};
+
+// Options params:
+//
+// user_token : String
+// description : String
+// start_date : Date
+// end_date : Date
+// recipients : Array of Objects
+EdmodoAPI.prototype.newEvent = function newEvent(options, callback){
+
+	// Default parameters
+	options.description = options.description || "";
+	options.startDate = moment(options.startDate).format("YYYY-MM-DD");
+	options.endDate = moment(options.endDate).format("YYYY-MM-DD");
+
+	var uri = this.resource_uri("newEvent");
+
+	var qs = { api_key : this.apiKey, user_token : options.userToken, description : options.description, start_date : options.startDate, end_date : options.endDate, recipients : options.recipients.to_params() };
 
 	this.request(uri, qs, callback, "POST");
 };

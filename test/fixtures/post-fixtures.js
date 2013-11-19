@@ -41,12 +41,11 @@ uri = config.sandbox.endpoint + "/setGrade?api_key=" + test.api_key + "&grade_id
 test.fakeweb.registerUri({ uri: uri, body: '{"user_token":"83a8e614d", "score":"3", "total":"10"}'});
 
 // newEvent request uri
-uri = config.sandbox.endpoint + "/newEvent?api_key=" + test.api_key + "&user_token=b020c42d1&description=Pizza%20party%20tomorrow&start_date=#{Date.today.to_s}&end_date=#{Date.today.to_s}&recipients=%5B%7B%22user_token%22%3A%22b020c42d1%22%7D%2C%7B%22group_id%22%3A379557%7D%5D";
+uri = config.sandbox.endpoint + "/newEvent?api_key=" + test.api_key + "&user_token=b020c42d1&description=Pizza%20party%20tomorrow&start_date=2014-01-01&end_date=2015-01-01&recipients=%5B%7B%22user_token%22%3A%22b020c42d1%22%7D%2C%7B%22group_id%22%3A379557%7D%5D";
 
 test.fakeweb.registerUri({ uri: uri, body: '{"event_id":621119}'});
 
 // addToLibrary request uri
-
 uri = config.sandbox.endpoint + "/addToLibrary?api_key=" + test.api_key + "&user_token=b020c42d1&publisher_owned=1&resource=%7B%3Atype%3D%3E%22link%22%2C%20%3Atitle%3D%3E%22A%20link%22%2C%20%3Aurl%3D%3E%22http%3A%2F%2Fwww.edmodo.com%22%2C%20%3Athumb_url%3D%3E%22http%3A%2F%2Fimages.edmodo.com%2Fimages%2Flogos%2Fedmodo_134x43.png%22%7D";
 
 test.fakeweb.registerUri({ uri: uri, body: '{"library_item_id":"456"}'});
