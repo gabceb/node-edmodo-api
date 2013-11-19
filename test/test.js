@@ -711,6 +711,24 @@ describe('Node-Edmodo-API', function(){
 				});
 			});
 
+			describe('addToLibrary', function(){
+				it('should get the correct object back from the addToLibrary request', function(done){	
+			      
+			      var userToken = "b020c42d1";
+			      var publisherOwned = 1;
+			      var resource = {"type":"link", "title": "A link", "url" : "http://www.edmodo.com", "thumb_url" : "http://images.edmodo.com/images/logos/edmodo_134x43.png"};
+			      
+			      var options = { userToken : userToken, publisherOwned : publisherOwned, resource : resource };
+
+			      client.addToLibrary(options, function(response, body){
+			      	
+			      	body.should.have.property('library_item_id', "456");
+			      	
+			      	done();
+			      });
+				});
+			});
+
 		});
 	});
 });

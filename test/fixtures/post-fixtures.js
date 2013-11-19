@@ -46,7 +46,7 @@ uri = config.sandbox.endpoint + "/newEvent?api_key=" + test.api_key + "&user_tok
 test.fakeweb.registerUri({ uri: uri, body: '{"event_id":621119}'});
 
 // addToLibrary request uri
-uri = config.sandbox.endpoint + "/addToLibrary?api_key=" + test.api_key + "&user_token=b020c42d1&publisher_owned=1&resource=%7B%3Atype%3D%3E%22link%22%2C%20%3Atitle%3D%3E%22A%20link%22%2C%20%3Aurl%3D%3E%22http%3A%2F%2Fwww.edmodo.com%22%2C%20%3Athumb_url%3D%3E%22http%3A%2F%2Fimages.edmodo.com%2Fimages%2Flogos%2Fedmodo_134x43.png%22%7D";
+uri = config.sandbox.endpoint + "/addToLibrary?api_key=" + test.api_key + "&user_token=b020c42d1&publisher_owned=1&resource=%7B%22type%22%3A%22link%22%2C%22title%22%3A%22A%20link%22%2C%22url%22%3A%22http%3A%2F%2Fwww.edmodo.com%22%2C%22thumb_url%22%3A%22http%3A%2F%2Fimages.edmodo.com%2Fimages%2Flogos%2Fedmodo_134x43.png%22%7D";
 
 test.fakeweb.registerUri({ uri: uri, body: '{"library_item_id":"456"}'});
 

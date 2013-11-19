@@ -380,6 +380,20 @@ EdmodoAPI.prototype.newEvent = function newEvent(options, callback){
 	this.request(uri, qs, callback, "POST");
 };
 
+// Options params:
+//
+// user_token : String
+// publisher_owned : Integer
+// resource : Object
+EdmodoAPI.prototype.addToLibrary = function addToLibrary(options, callback){
+
+	var uri = this.resource_uri("addToLibrary");
+
+	var qs = { api_key : this.apiKey, user_token : options.userToken, publisher_owned : options.publisherOwned, resource : JSON.stringify(options.resource) };
+
+	this.request(uri, qs, callback, "POST");
+};
+
 // Private methods
 
 EdmodoAPI.prototype.request = function(uri, qs, callback, method){
