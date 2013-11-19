@@ -1,7 +1,7 @@
 var test = require("./fixture-helper");
 
 // Unauthorized request
-uri = config.sandbox.endpoint + "/launchRequests.json?api_key=" + test.api_key + "&launch_key=5c18c7"
+var uri = config.sandbox.endpoint + "/launchRequests.json?api_key=" + test.api_key + "&launch_key=5c18c7"
 
 test.fakeweb.registerUri({uri: uri, body : '{"error":{"code":3000,"message":"Unauthorized API request"}}', status: ["401", "Authorization Required"]});
 

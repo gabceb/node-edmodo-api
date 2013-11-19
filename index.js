@@ -15,6 +15,9 @@ Array.prototype.to_params = function(){
 		if (typeof this[i] === 'string') {
     		params += '"' + this[i] + '"';
 		}
+		else if(typeof this[i] == 'object'){
+			params += JSON.stringify(this[i]);
+		}
 		else {
 			params += this[i];
 		}
@@ -62,8 +65,11 @@ var EdmodoAPI = function(apiKey, productionEnv){
 
 module.exports = EdmodoAPI;
 
+// GET Requests
+
 EdmodoAPI.prototype.launchRequests = function launRequests(launchRequest, callback){
-	var uri = this.resource_uri("launchRequests");
+	
+	var uri = this.resource_uri("launchRequests", "json");
 	var qs = { api_key : this.apiKey, launch_key : launchRequest};
 
 	this.request(uri, qs, callback);
@@ -77,7 +83,7 @@ EdmodoAPI.prototype.users = function users(userIds, callback){
 		userIds = [userIds];
 	}
 
-	var uri = this.resource_uri("users");
+	var uri = this.resource_uri("users", "json");
 	var qs = { api_key : this.apiKey, user_tokens : userIds.to_params() };
 
 	this.request(uri, qs, callback);
@@ -91,7 +97,7 @@ EdmodoAPI.prototype.groups = function groups(groups, callback){
 		groups = [groups];
 	}
 
-	var uri = this.resource_uri("groups");
+	var uri = this.resource_uri("groups", "json");
 	var qs = { api_key : this.apiKey, group_ids : groups.to_params() };
 
 	this.request(uri, qs, callback);
@@ -99,7 +105,7 @@ EdmodoAPI.prototype.groups = function groups(groups, callback){
 
 EdmodoAPI.prototype.groupsForUser = function groups_for_user(userToken, callback){
 	
-	var uri = this.resource_uri("groupsForUser");
+	var uri = this.resource_uri("groupsForUser", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -107,7 +113,7 @@ EdmodoAPI.prototype.groupsForUser = function groups_for_user(userToken, callback
 
 EdmodoAPI.prototype.members = function members(groupId, callback){
 	
-	var uri = this.resource_uri("members");
+	var uri = this.resource_uri("members", "json");
 	var qs = { api_key : this.apiKey, group_id : groupId };
 
 	this.request(uri, qs, callback);
@@ -115,7 +121,7 @@ EdmodoAPI.prototype.members = function members(groupId, callback){
 
 EdmodoAPI.prototype.classmates = function classmates(userToken, callback){
 	
-	var uri = this.resource_uri("classmates");
+	var uri = this.resource_uri("classmates", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -123,7 +129,7 @@ EdmodoAPI.prototype.classmates = function classmates(userToken, callback){
 
 EdmodoAPI.prototype.teachers = function teachers(userToken, callback){
 	
-	var uri = this.resource_uri("teachers");
+	var uri = this.resource_uri("teachers", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -131,7 +137,7 @@ EdmodoAPI.prototype.teachers = function teachers(userToken, callback){
 
 EdmodoAPI.prototype.teachermates = function teachermates(userToken, callback){
 	
-	var uri = this.resource_uri("teachermates");
+	var uri = this.resource_uri("teachermates", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -139,7 +145,7 @@ EdmodoAPI.prototype.teachermates = function teachermates(userToken, callback){
 
 EdmodoAPI.prototype.teacherConnections = function teacherConnections(userToken, callback){
 	
-	var uri = this.resource_uri("teacherConnections");
+	var uri = this.resource_uri("teacherConnections", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -147,7 +153,7 @@ EdmodoAPI.prototype.teacherConnections = function teacherConnections(userToken, 
 
 EdmodoAPI.prototype.assignmentsComingDue = function assignmentsComingDue(userToken, callback){
 	
-	var uri = this.resource_uri("assignmentsComingDue");
+	var uri = this.resource_uri("assignmentsComingDue", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -155,7 +161,7 @@ EdmodoAPI.prototype.assignmentsComingDue = function assignmentsComingDue(userTok
 
 EdmodoAPI.prototype.gradesSetByAppForUser = function gradesSetByAppForUser(userToken, callback){
 	
-	var uri = this.resource_uri("gradesSetByAppForUser");
+	var uri = this.resource_uri("gradesSetByAppForUser", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -163,7 +169,7 @@ EdmodoAPI.prototype.gradesSetByAppForUser = function gradesSetByAppForUser(userT
 
 EdmodoAPI.prototype.gradesSetByAppForGroup = function gradesSetByAppForGroup(groupId, callback){
 	
-	var uri = this.resource_uri("gradesSetByAppForGroup");
+	var uri = this.resource_uri("gradesSetByAppForGroup", "json");
 	var qs = { api_key : this.apiKey, group_id : groupId };
 
 	this.request(uri, qs, callback);
@@ -171,7 +177,7 @@ EdmodoAPI.prototype.gradesSetByAppForGroup = function gradesSetByAppForGroup(gro
 
 EdmodoAPI.prototype.badgesAwarded = function badgesAwarded(userToken, callback){
 	
-	var uri = this.resource_uri("badgesAwarded");
+	var uri = this.resource_uri("badgesAwarded", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -179,7 +185,7 @@ EdmodoAPI.prototype.badgesAwarded = function badgesAwarded(userToken, callback){
 
 EdmodoAPI.prototype.eventsByApp = function eventsByApp(userToken, callback){
 	
-	var uri = this.resource_uri("eventsByApp");
+	var uri = this.resource_uri("eventsByApp", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -187,7 +193,7 @@ EdmodoAPI.prototype.eventsByApp = function eventsByApp(userToken, callback){
 
 EdmodoAPI.prototype.parents = function parents(userToken, callback){
 	
-	var uri = this.resource_uri("parents");
+	var uri = this.resource_uri("parents", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -195,7 +201,7 @@ EdmodoAPI.prototype.parents = function parents(userToken, callback){
 
 EdmodoAPI.prototype.children = function children(userToken, callback){
 	
-	var uri = this.resource_uri("children");
+	var uri = this.resource_uri("children", "json");
 	var qs = { api_key : this.apiKey, user_token : userToken };
 
 	this.request(uri, qs, callback);
@@ -209,16 +215,42 @@ EdmodoAPI.prototype.profiles = function profiles(userTokens, callback){
 		userTokens = [userTokens];
 	}
 
-	var uri = this.resource_uri("profiles");
+	var uri = this.resource_uri("profiles", "json");
 	var qs = { api_key : this.apiKey, user_tokens : userTokens.to_params() };
 
 	this.request(uri, qs, callback);
 };
 
+// POST requests
+
+// Options params:
+//
+// userToken: String
+// content: String
+// recipients: Array of Objects
+// attachments: Array of Objects 
+EdmodoAPI.prototype.userPost = function userPost(options, callback){
+	
+	// Default parameters
+	options.content = options.content || "";
+	options.recipients = options.recipients || [];
+	options.attachments = options.attachments || [];
+
+	var uri = this.resource_uri("userPost");
+
+	var qs = { api_key : this.apiKey, user_token : options.userToken, content : options.content, recipients : options.recipients, attachments : options.attachments };
+
+	this.request(uri, qs, callback, "POST");
+};
+
 // Private methods
 
-EdmodoAPI.prototype.request = function(uri, qs, callback){
-	request({uri : uri, qs : qs, json : true }, function(error, response, body){
+EdmodoAPI.prototype.request = function(uri, qs, callback, method){
+
+	// Default to GET method
+	method = method || "GET";
+
+	request(uri, {qs : qs, json : true, method : method }, function(error, response, body){
 		
 		if(!error && response.statusCode == 200){
 			callback(response, body);
@@ -229,8 +261,14 @@ EdmodoAPI.prototype.request = function(uri, qs, callback){
 	});
 };
 
-EdmodoAPI.prototype.resource_uri = function(resource){
-	format = ".json";
+EdmodoAPI.prototype.resource_uri = function(resource, format){
+	
+	if(format) {
+		format = "." + format;
+	}
+	else {
+		format = "";
+	}
 
 	return this.url + "/" + resource + format;
 };

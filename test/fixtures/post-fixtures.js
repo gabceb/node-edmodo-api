@@ -1,7 +1,7 @@
 test = require("./fixture-helper");
 
 // userPost request uri
-uri = config.sandbox.endpoint + "/userPost?api_key=1234567890abcdefghijklmn&user_token=b020c42d1&content=This%20is%20my%20test%20message&recipients=%5B%7B%22user_token%22%3A%22b020c42d1%22%7D%2C%7B%22user_token%22%3A%22693d5c765%22%7D%2C%7B%22group_id%22%3A379557%7D%5D&attachments=%5B%7B%22type%22%3A%22link%22%2C%22title%22%3A%22A%20link%22%2C%22url%22%3A%22http%3A%2F%2Fwww.edmodo.com%22%7D%2C%7B%22type%22%3A%22embed%22%2C%22title%22%3A%22An%20embed%20with%20an%20optional%20thumbnail%20url%22%2C%22thumb_url%22%3A%22http%3A%2F%2Fimages.edmodo.com%2Fimages%2Flogos%2Fedmodo_134x43.png%22%7D%5D";
+var uri = config.sandbox.endpoint + "/userPost?api_key=1234567890abcdefghijklmn&user_token=b020c42d1&content=This%20is%20my%20test%20message&recipients=%5B%7B%22user_token%22%3A%22b020c42d1%22%7D%2C%7B%22user_token%22%3A%22693d5c765%22%7D%2C%7B%22group_id%22%3A379557%7D%5D&attachments=%5B%7B%22type%22%3A%22link%22%2C%22title%22%3A%22A%20link%22%2C%22url%22%3A%22http%3A%2F%2Fwww.edmodo.com%22%7D%2C%7B%22type%22%3A%22embed%22%2C%22title%22%3A%22An%20embed%20with%20an%20optional%20thumbnail%20url%22%2C%22thumb_url%22%3A%22http%3A%2F%2Fimages.edmodo.com%2Fimages%2Flogos%2Fedmodo_134x43.png%22%7D%5D";
 
 test.fakeweb.registerUri({ uri: uri, body: '{"status":"success"}' });
 

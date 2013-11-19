@@ -544,4 +544,25 @@ describe('Node-Edmodo-API', function(){
 			});
 		});
 	});
+
+	describe('POST requests', function(){
+
+			describe('userPost', function(){
+				it('should get the correct object back from the userPost request', function(done){	
+			      var userToken = "b020c42d1";
+			      var recipients = [{"user_token":"b020c42d1"},{"user_token":"693d5c765"},{"group_id":379557}];
+			      var content = "This is my test message";
+			      var attachments = [{"type":"link","title":"A link","url":"http://www.edmodo.com"},{"type":"embed","title":"An embed with an optional thumbnail url","thumb_url":"http://images.edmodo.com/images/logos/edmodo_134x43.png"}];
+
+			      var options = {userToken : userToken, content : content, recipients : recipients.to_params(), attachments : attachments.to_params() };
+
+			      client.userPost(options, function(response, body){
+			      	body.should.have.property('status', 'success');
+			      	
+			      	done();
+			      });
+				});
+			});
+
+		});
 });
