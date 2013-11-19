@@ -8,7 +8,8 @@ module.exports = function(grunt) {
 				globals: {
 					console: true,
 					module: true
-				}
+				},
+				es5: true 
 			}
 		}
 	});

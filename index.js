@@ -1,10 +1,10 @@
 var util = require('util'),
-	request = require('request'),
-	events = require('events'),
-	_und = require('underscore'),
-	_und_s = require('underscore.string'),
-	moment = require('moment'),
-	config = require('./config.js')();
+request = require('request'),
+events = require('events'),
+_und = require('underscore'),
+_und_s = require('underscore.string'),
+moment = require('moment'),
+config = require('./config.js')();
 
 // Helper functions
 Array.prototype.to_params = function(){
@@ -14,24 +14,24 @@ Array.prototype.to_params = function(){
 	{
 		// TO DO: Refactor this method
 		if (typeof this[i] === 'string') {
-    		params += '"' + this[i] + '"';
-		}
-		else if(typeof this[i] == 'object'){
-			params += JSON.stringify(this[i]);
-		}
-		else {
-			params += this[i];
-		}
-		
+          params += '"' + this[i] + '"';
+      }
+      else if(typeof this[i] == 'object'){
+         params += JSON.stringify(this[i]);
+     }
+     else {
+         params += this[i];
+     }
 
-		if(i != this.length - 1)
-		{
-			params += ",";
-		}
-	}
 
-	return params + "]";
-}
+     if(i != this.length - 1)
+     {
+         params += ",";
+     }
+ }
+
+ return params + "]";
+};
 
 var _my = null;
 
@@ -39,10 +39,10 @@ var debug;
 
 if (/\bverbose\b/.test(process.env.NODE_DEBUG)) {
   debug = function() {
-    console.error('DEBUG: %s', util.format.apply(util, arguments))
-  }
+    console.error('DEBUG: %s', util.format.apply(util, arguments));
+};
 } else {
-  debug = function() {}
+  debug = function() {};
 }
 
 var EdmodoAPI = function(apiKey, productionEnv){
@@ -90,7 +90,7 @@ EdmodoAPI.prototype.users = function users(userIds, callback){
 	this.request(uri, qs, callback);
 };
 
-EdmodoAPI.prototype.groups = function groups(groups, callback){
+EdmodoAPI.prototype.groups = function(groups, callback){
 	
 	// HACK HACK: Same hack used by jQuery to detect arrays cross platforms. See http://stackoverflow.com/a/2763063/1664346
 	if(toString.call(groups) !== "[object Array]")
