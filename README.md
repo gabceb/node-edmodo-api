@@ -72,3 +72,7 @@ make test-dev (verbose output for request and debug function)
 You're welcome to fork this project and send pull requests. Please include tests and run `grunt` to make sure all file have lint check.
 
 Copyright (c) 2013 Gabriel Cebrian, released under the MIT license
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/gabceb/node-edmodo-api/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
